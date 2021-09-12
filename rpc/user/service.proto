@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package myugen.go_mss_twyrp.user;
+option go_package = "github.com/myugen/go-mss-twirp/rpc/user";
+
+service User {
+  rpc Create(UserIn) returns (UserOut);
+}
+
+message UserIn {
+  string username = 1;
+  string mail = 2;
+  string name = 3;
+}
+
+message UserOut {
+  string id = 1;
+  string username = 2;
+  string mail = 3;
+  string name = 4;
+}
