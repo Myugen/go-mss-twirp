@@ -1,2 +1,5 @@
 # Jetbrains
 .idea
+
+/bin
+!/bin/README.md
