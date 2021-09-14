@@ -36,3 +36,5 @@ WORKDIR /root/
 COPY --from=builder /go/src/github.com/myugen/go-mss-twirp/app ./
 
 ENTRYPOINT [ "./app" ]
+
+CMD [ "--help" ]
