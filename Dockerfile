@@ -6,18 +6,25 @@ FROM golang:${GOLANG_VERSION} as builder
 
 WORKDIR /go/src/github.com/myugen/go-mss-twirp/
 
-COPY go.mod ./
-COPY go.sum ./
+RUN echo 'Installing system dependencies' \
+    && apk update \
+    && apk add protoc
+
+COPY . ./
+
+ENV CGO_ENABLED=0 \
+    GO111MODULE="on" \
+    GOOS=linux
+
 RUN echo 'Downloading go.mod dependencies' \
     && go mod download
-
-COPY *.go ./
 RUN echo 'Installing tools from tools.go' \
     && cat tools.go | grep _ | awk -F'"' '{print $2}' | xargs -tI % go install %
 RUN echo 'Generating gRPC services' \
     && go generate ./...
 
-RUN CGO_ENABLED=0 GOOS=linux go build -a -o app .
+RUN go build -a -o app .
+RUN chmod +x app
 
 
 # Generate clean, final image for end users

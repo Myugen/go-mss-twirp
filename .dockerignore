@@ -1,0 +1,9 @@
+# Jetbrains
+.idea
+
+# Project files
+/bin
+!/bin/README.md
+Makefile
+docker-compose.yml
+Dockerfile

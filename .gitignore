@@ -1,5 +1,6 @@
 # Jetbrains
 .idea
 
+# Project binaries tools
 /bin
 !/bin/README.md
