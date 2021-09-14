@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "github.com/myugen/go-mss-twirp/cmd"
 
 func main() {
-	fmt.Println("Hello world!!")
+	cmd.Execute()
 }
