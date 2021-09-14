@@ -30,7 +30,7 @@ ifeq ($(DEBUG), 1)
 	$(info   - DOCKER_COMPOSE_FILE: $(DOCKER_COMPOSE_FILE))
 	$(info   - SERVICE: $(SERVICE))
 endif
-	@docker-compose -f $(or $(DOCKER_COMPOSE_FILE),docker-compose.yml) up -d $(SERVICE)
+	@docker-compose -f $(or $(DOCKER_COMPOSE_FILE),docker-compose.yml) up -d --build $(SERVICE)
 .PHONY: up
 
 run:
