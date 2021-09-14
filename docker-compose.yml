@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  app:
+    build:
+      context: .
+      target: app
+    image: myugen/go-mss-twirp:latest
+    container_name: go-mss-twirp_app
+    ports:
+      - "8080:8080"
+    tty: true
