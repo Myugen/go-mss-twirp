@@ -19,7 +19,7 @@ help:
 	@echo "                         - DOCKER_COMPOSE_FILE: set docker compose file to execute, default: docker-compose.yml"
 	@echo ""
 	@echo "  <\`app\` specific targets>:"
-	@echo "  app                to up the \`app\` service with logs"
+	@echo "  server             to run up the \`server\` service with logs"
 	@echo ""
 	@echo "You can set \`DEBUG=1\` flag to debug make execution"
 .PHONY: help
@@ -61,6 +61,6 @@ endif
 	@docker-compose -f $(or $(DOCKER_COMPOSE_FILE),docker-compose.yml) down
 .PHONY: down
 
-app: SERVICE=app
-app: up logs
-.PHONY: app
+server: SERVICE=server
+server: up logs
+.PHONY: server
