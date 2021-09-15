@@ -1,4 +1,4 @@
-package user_server
+package userserver
 
 import (
 	"context"
@@ -10,7 +10,7 @@ import (
 
 type server struct{}
 
-func (s *server) Create(ctx context.Context, in *pb.UserIn) (*pb.UserOut, error) {
+func (s *server) Create(_ context.Context, in *pb.UserIn) (*pb.UserOut, error) {
 	if in.Username == "" {
 		return nil, twirp.NewError(twirp.InvalidArgument, "The username field can not be empty")
 	}
