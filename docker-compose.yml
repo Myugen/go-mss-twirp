@@ -1,11 +1,21 @@
 version: "3.9"
 services:
-  app:
+  x-app: &default-app
     build:
       context: .
       target: app
     image: myugen/go-mss-twirp:latest
-    container_name: go-mss-twirp_app
+    tty: true
+    networks:
+      - default-net
+
+  server:
+    <<: *default-app
+    container_name: app_server
     ports:
       - "8080:8080"
-    tty: true
+    command: [ 'server', 'up' ]
+
+networks:
+  default-net:
+    driver: bridge
